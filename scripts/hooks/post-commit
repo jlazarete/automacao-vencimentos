@@ -1,0 +1,12 @@
+#!/bin/sh
+# Hook opcional do Git: atualiza o contexto do NotebookLM depois de cada commit.
+#
+# Instalação (uma vez, na raiz do repositório):
+#   cp scripts/hooks/post-commit .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+# Remoção:
+#   rm .git/hooks/post-commit
+#
+# Exige GOOGLE_DRIVE_PATH no .env. Um erro aqui nunca impede nem desfaz o commit.
+RAIZ="$(git rev-parse --show-toplevel)"
+python3 "$RAIZ/scripts/sync_notebooklm.py" --copiar || echo "sync_notebooklm: não foi possível atualizar o contexto (o commit foi feito normalmente)."
+exit 0

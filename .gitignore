@@ -1,0 +1,22 @@
+# Ambientes virtuais e segredos
+.venv/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+
+# Dados: planilhas, CSVs e logs nunca vão para o repositório
+*.xlsx
+*.xls
+*.csv
+*.log
+dados_teste/
+
+# Contexto consolidado para o NotebookLM (gerado por scripts/sync_notebooklm.py)
+notebooklm_context.md
+
+# Scripts de ambiente local
+Ativa_ambiente_virtual.ps1

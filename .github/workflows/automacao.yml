@@ -1,0 +1,65 @@
+name: Automação Alerta de Renovação
+
+on:
+  schedule:
+    # Todos os dias às 08:30 Horário de Brasília (11:30 UTC)
+    - cron: '30 11 * * *'
+  workflow_dispatch:
+
+# Princípio do menor privilégio: o job só lê o código do repositório.
+permissions:
+  contents: read
+
+concurrency:
+  group: automacao-vencimentos
+  cancel-in-progress: false
+
+jobs:
+  executar_robo:
+    # Interruptor de segurança: o robô só roda se a variável de repositório
+    # AUTOMACAO_ATIVA for exatamente 'true' (Settings > Secrets and variables > Actions > Variables).
+    # Em forks e em cópias do repositório, onde a variável não existe, o job é pulado.
+    if: ${{ vars.AUTOMACAO_ATIVA == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    # Actions de terceiros fixadas por SHA do commit (a tag móvel indicada no comentário
+    # pode ser reapontada; o SHA, não). Para atualizar, troque o SHA e o comentário.
+    - name: Baixando código do repositório
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      with:
+        persist-credentials: false
+
+    - name: Configurando Python 3.12
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+      with:
+        python-version: '3.12'
+
+    - name: Instala dependências do projeto
+      run: pip install -r requirements.txt
+
+    - name: Validação Pré-Execução (Agente de Validação)
+      run: python validar_codigo.py
+
+    - name: Testes de privacidade e segurança
+      run: |
+        python teste_lgpd.py
+        python teste_seguranca.py
+
+    - name: Análise Estática de Segurança (Bandit)
+      run: |
+        pip install bandit==1.9.4
+        bandit -r main.py lgpd_engine.py
+
+    - name: Executando o script de verificação
+      env:
+        DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+        DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+        DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        # Opcionais: vazias usam o padrão do código (20 dias e raiz do Dropbox).
+        DIAS_ANTECEDENCIA: ${{ vars.DIAS_ANTECEDENCIA }}
+        DROPBOX_PASTA: ${{ vars.DROPBOX_PASTA }}
+      run: python main.py
