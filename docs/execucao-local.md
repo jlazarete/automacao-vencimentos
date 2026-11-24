@@ -9,8 +9,7 @@
   <a href="gerar-senha-app-google.md">Senha App Google</a> •
   <a href="configuracao-github-actions.md">GitHub Secrets</a> •
   <a href="token-dropbox.md">API Dropbox</a> •
-  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a> •
-  <a href="sincronizacao-notebooklm.md">NotebookLM</a>
+  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a>
 </p>
 
 ---
@@ -74,7 +73,7 @@ python3 main.py               # processa a planilha e envia os alertas
 ```
 
 > [!WARNING]
-> `main.py` envia e-mails reais quando encontra um vencimento no prazo. Para testar sem risco, use uma planilha fictícia (veja [Sincronização do NotebookLM e Planilha Fictícia](sincronizacao-notebooklm.md)).
+> `main.py` envia e-mails reais quando encontra um vencimento no prazo. Para testar sem risco, use uma planilha de teste com dados fictícios (o arquivo precisa ter "teste" no nome).
 
 ---
 
@@ -86,7 +85,6 @@ Sempre que alterar o código, compile e rode os testes. Eles usam Dropbox e SMTP
 python3 -m py_compile main.py
 python3 teste_lgpd.py
 python3 teste_seguranca.py
-python3 teste_scripts.py
 ```
 
 > [!IMPORTANT]

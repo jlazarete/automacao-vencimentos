@@ -9,8 +9,7 @@
   <a href="gerar-senha-app-google.md">Senha App Google</a> •
   <a href="configuracao-github-actions.md">GitHub Secrets</a> •
   <a href="token-dropbox.md">API Dropbox</a> •
-  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a> •
-  <a href="sincronizacao-notebooklm.md">NotebookLM</a>
+  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a>
 </p>
 ---
 
@@ -25,7 +24,6 @@ Bem-vindo à central de documentação de apoio do robô de vencimento de seguro
 - [**GitHub Secrets**](configuracao-github-actions.md) — Lista completa de secrets e variáveis obrigatórias e opcionais no repositório.
 - [**Integração com Dropbox e Refresh Token**](token-dropbox.md) — Passo a passo detalhado para registrar o app e gerar tokens de acesso persistente.
 - [**Estratégia de Resiliência, Observabilidade e n8n**](PLANO_RESILIENCIA.md) — Retry logic (Tenacity), geração profissional de logs e planejamento futuro de migração para o n8n.
-- [**Sincronização do NotebookLM e Planilha Fictícia**](sincronizacao-notebooklm.md) — Geração do contexto do projeto para o NotebookLM (com cópia ao Google Drive e aviso por e-mail) e gerador de planilha de clientes fictícia.
 
 ---
 

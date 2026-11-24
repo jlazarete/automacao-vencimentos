@@ -44,7 +44,7 @@ Este projeto possui um motor DPO (`lgpd_engine.py`) nativo, que mascara dados pe
 ### Segurança
 
 - **Conexão SMTP com validação de certificado** e HTML do e-mail com escape de todo valor vindo da planilha.
-- **Testes automatizados** (`teste_lgpd.py`, `teste_seguranca.py` e `teste_scripts.py`) rodam no CI com Dropbox e SMTP simulados, sem rede e sem credenciais.
+- **Testes automatizados** (`teste_lgpd.py` e `teste_seguranca.py`) rodam no CI com Dropbox e SMTP simulados, sem rede e sem credenciais.
 - **Análise estática** (Bandit) e **auditoria de dependências** (pip-audit) a cada push; GitHub Actions fixadas por SHA e com permissão mínima.
 - Para relatar uma vulnerabilidade, veja a [Política de Segurança](./SECURITY.md).
 
@@ -59,7 +59,7 @@ sudo apt install python3-venv            # somente na primeira vez (Ubuntu/Debia
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-python3 teste_lgpd.py && python3 teste_seguranca.py && python3 teste_scripts.py   # sem rede e sem credenciais
+python3 teste_lgpd.py && python3 teste_seguranca.py   # sem rede e sem credenciais
 cp .env.example .env && chmod 600 .env   # depois preencha as credenciais
 python3 main.py
 ```
@@ -87,12 +87,7 @@ Abaixo está a disposição das pastas e arquivos do repositório:
 ├── validar_codigo.py             # Agente de validação (sintaxe, imports, estrutura)
 ├── teste_lgpd.py                 # Testes do motor LGPD (dados fictícios)
 ├── teste_seguranca.py            # Testes de segurança e privacidade de ponta a ponta
-├── teste_scripts.py              # Testes dos scripts auxiliares (NotebookLM e planilha fictícia)
-├── atualizar_datas_dropbox.py    # Ferramenta de teste: reescreve datas de uma planilha fictícia
-├── scripts/
-│   ├── sync_notebooklm.py        # Consolida código e docs em um Markdown para o NotebookLM
-│   ├── gerar_planilha_ficticia.py  # Gera uma planilha de clientes 100% fictícia
-│   └── hooks/post-commit         # Hook opcional: atualiza o contexto após cada commit
+├── atualizar_datas_dropbox.py    # Ferramenta de teste: reescreve datas de uma planilha de teste
 ├── requirements.txt              # Dependências obrigatórias com versões fixadas
 └── README.md                     # Documentação do projeto
 ```
@@ -110,7 +105,6 @@ Para manter as credenciais protegidas, configurar o ambiente local e garantir um
 - [Instruções para Gerar Senha de Aplicativo Google](./docs/gerar-senha-app-google.md)
 - [Guia de Cadastro de Credenciais no GitHub Secrets](./docs/configuracao-github-actions.md)
 - [Configuração da API do Dropbox & Refresh Token](./docs/token-dropbox.md)
-- [Sincronização do NotebookLM e Planilha Fictícia](./docs/sincronizacao-notebooklm.md)
 
 ---
 

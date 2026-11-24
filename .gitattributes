@@ -1,7 +1,6 @@
 # Linux primeiro: todo texto versionado usa LF, em qualquer sistema.
 * text=auto eol=lf
 *.sh text eol=lf
-scripts/hooks/post-commit text eol=lf
 
 # Binarios nunca sofrem conversao de final de linha.
 *.xlsx binary

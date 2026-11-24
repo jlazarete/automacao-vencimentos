@@ -41,12 +41,11 @@ jobs:
       run: |
         python teste_lgpd.py
         python teste_seguranca.py
-        python teste_scripts.py
 
     - name: Análise Estática de Segurança (Bandit)
       run: |
         pip install bandit==1.9.4
-        bandit -r main.py lgpd_engine.py atualizar_datas_dropbox.py scripts
+        bandit -r main.py lgpd_engine.py atualizar_datas_dropbox.py
 
     - name: Auditoria de vulnerabilidades nas dependências (pip-audit)
       run: |

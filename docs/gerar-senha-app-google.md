@@ -9,8 +9,7 @@
   <strong>Senha App Google</strong> •
   <a href="configuracao-github-actions.md">GitHub Secrets</a> •
   <a href="token-dropbox.md">API Dropbox</a> •
-  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a> •
-  <a href="sincronizacao-notebooklm.md">NotebookLM</a>
+  <a href="PLANO_RESILIENCIA.md">Resiliência & Logs</a>
 </p>
 ---
 

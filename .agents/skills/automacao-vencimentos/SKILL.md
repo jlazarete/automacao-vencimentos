@@ -26,7 +26,7 @@ Antes de qualquer commit, execute o **agente de validação** que verifica sinta
 
 ```bash
 python3 validar_codigo.py
-python3 teste_lgpd.py && python3 teste_seguranca.py && python3 teste_scripts.py
+python3 teste_lgpd.py && python3 teste_seguranca.py
 ```
 
 Para uma verificação rápida somente de sintaxe:

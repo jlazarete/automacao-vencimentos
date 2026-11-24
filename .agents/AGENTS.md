@@ -29,7 +29,7 @@ Este arquivo define regras de comportamento persistentes que devem ser seguidas 
 - Não registrar em log nomes de clientes, caminhos do Dropbox ou mensagens de exceção de bibliotecas. Use `mascarar_nome()` e `descrever_erro()` de `main.py`.
 - Todo valor vindo da planilha e colocado em HTML passa por `escape()`; em URL, por `quote()`.
 - Coluna nova na planilha sai removida da base anonimizada até ser classificada em `lgpd_engine.py`.
-- Antes de qualquer commit: `python3 teste_lgpd.py`, `python3 teste_seguranca.py` e `python3 teste_scripts.py`.
+- Antes de qualquer commit: `python3 teste_lgpd.py` e `python3 teste_seguranca.py`.
 
 ## 📝 Padrão de Formatação de Documentação (Visual Padrão Limpo e Organizado)
 - **Visual Limpo e Técnico:** Evite usar emoticons em cabeçalhos (títulos `#`, `##`, `###`). Mantenha os títulos puramente textuais e sóbrios.
